@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import MessageList from './Messages/MessageList.jsx';
+import MessageForm from './Messages/MessageForm.jsx';
+import UserList from './Users/UserList.jsx';
+import UserForm from './Users/UserForm.jsx';
 
 class App extends Component{
 	constructor(props){
@@ -11,8 +15,14 @@ class App extends Component{
 
 	render(){
 		return(
-			<div>
-				This is my app
+			<div className="row">
+				<div className="col-md-4">
+					<UserList />
+				</div>
+				<div className="col-md-8">
+					<MessageList />
+					<MessageForm />
+				</div>
 			</div>
 		)
 	}
