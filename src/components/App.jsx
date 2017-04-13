@@ -24,6 +24,7 @@ class App extends Component{
 		this.socket = io('http://localhost:3000');
 		this.socket.on('connect',this.connect.bind(this));
 		this.socket.on('messageAdded',this.onMessageAdded.bind(this));
+		this.socket.on('userJoined',this.onUserJoined.bind(this));
 	}
 
 	connect(){
@@ -38,6 +39,10 @@ class App extends Component{
 	onMessageAdded(message){
 		this.setState({messages: this.state.messages.concat(message)});
 		//console.log(this.state.messages);
+	}
+
+	onUserJoined(users){
+		this.setState({users: users});
 	}
 
 	emit(eventName, payload){

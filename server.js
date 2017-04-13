@@ -22,6 +22,17 @@ io.sockets.on('connect', function(socket) {
 		var newMessage = payload;
 		io.emit('messageAdded', newMessage);
 	});
+	// user joined event
+	socket.on('userJoined', function(payload) {
+		var newUser = {
+			id: this.id,
+			name: payload.name
+		};
+
+		users.push(newUser);
+
+		io.emit('userJoined', users);
+	})
 	connections.push(socket);
 	console.log('connected: %s sockets connected', connections.length);
 });
