@@ -6,7 +6,9 @@ class UserList extends Component{
 		super(props);
 	}
 	render(){
-		return (<div></div>);
+		return (<div>
+			User List
+		</div>);
 	}
 }
 

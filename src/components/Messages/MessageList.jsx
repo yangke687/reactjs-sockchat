@@ -6,7 +6,9 @@ class MessageList extends Component{
 		super(props);
 	}
 	render(){
-		return (<div></div>);
+		return (<div>
+			Message List
+		</div>);
 	}
 }
 

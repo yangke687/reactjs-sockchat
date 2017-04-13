@@ -6,7 +6,9 @@ class UserForm extends Component{
 		super(props);
 	}
 	render(){
-		return (<div></div>);
+		return (<div>
+			User Form
+		</div>);
 	}
 }
 

@@ -6,7 +6,9 @@ class MessageForm extends Component{
 		super(props);
 	}
 	render(){
-		return (<div></div>);
+		return (<div>
+			Message Form
+		</div>);
 	}
 }
 
