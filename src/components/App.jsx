@@ -16,7 +16,7 @@ class App extends Component{
 				text: 'Welcome to SockChat'
 			}],
 			users: [],
-			user: ''
+			user: null
 		}
 	}
 
@@ -44,7 +44,16 @@ class App extends Component{
 		this.socket.emit(eventName,payload);
 	}
 
+	setUser(user){
+		this.setState({user: user});
+	}
+
 	render(){
+		if( this.state.user === null ){
+			return (
+				<UserForm emit={this.emit.bind(this)} setUser={this.setUser.bind(this)} />
+			);
+		}
 		return(
 			<div className="row">
 				<div className="col-md-4">
