@@ -11,7 +11,10 @@ class App extends Component{
 		super(props);
 		this.state = {
 			status: 'disconnected',
-			messages: [],
+			messages: [{
+				timestamp: Date.now(),
+				text: 'Welcome to SockChat'
+			}],
 			users: [],
 			user: ''
 		}
