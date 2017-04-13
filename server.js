@@ -9,9 +9,21 @@ var server = app.listen(3000);
 var io = require('socket.io').listen(server);
 
 io.sockets.on('connect', function(socket) {
+	// disconnect event
+	socket.on('disconnect', function() {
+		connections.splice(connections.indexOf(socket), 1);
+		socket.disconnect();
+		console.log('disconnected: %s sockets connected', connections.length);
+		io.emit('disconnect');
+	});
+	// message added event
+	socket.on('messageAdded', function(payload) {
+		//console.log('message being added:', payload);
+		var newMessage = payload;
+		io.emit('messageAdded', newMessage);
+	});
 	connections.push(socket);
 	console.log('connected: %s sockets connected', connections.length);
 });
-
 
 console.log('the server is running port 3000...');

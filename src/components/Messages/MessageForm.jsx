@@ -7,8 +7,20 @@ class MessageForm extends Component{
 	}
 	render(){
 		return (<div>
-			Message Form
+			<form onSubmit={this.onSubmit.bind(this)}>
+				<input type="text" className="form-control" ref="text" placeholder="Please type your message"/>
+			</form>
 		</div>);
+	}
+	onSubmit(evt){
+		evt.preventDefault();
+		this.props.emit('messageAdded',{
+			timestamp: Date.now(),
+			text: this.refs.text.value.trim()
+		});
+
+		// clear form
+		this.refs.text.value = null;
 	}
 }
 
