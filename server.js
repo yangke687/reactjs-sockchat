@@ -11,10 +11,16 @@ var io = require('socket.io').listen(server);
 io.sockets.on('connect', function(socket) {
 	// disconnect event
 	socket.on('disconnect', function() {
+		// 
+		for (var i = 0; i < users.length; i++) {
+			if (users[i].id === this.id) {
+				users.splice(i, 1);
+			}
+		}
 		connections.splice(connections.indexOf(socket), 1);
 		socket.disconnect();
 		console.log('disconnected: %s sockets connected', connections.length);
-		io.emit('disconnect');
+		io.emit('disconnect', users);
 	});
 	// message added event
 	socket.on('messageAdded', function(payload) {

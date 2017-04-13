@@ -23,6 +23,7 @@ class App extends Component{
 	componentWillMount(){
 		this.socket = io('http://localhost:3000');
 		this.socket.on('connect',this.connect.bind(this));
+		this.socket.on('disconnect',this.disconnect.bind(this));
 		this.socket.on('messageAdded',this.onMessageAdded.bind(this));
 		this.socket.on('userJoined',this.onUserJoined.bind(this));
 	}
@@ -32,8 +33,10 @@ class App extends Component{
 		//console.log('connected:'+this.socket.id);
 	}
 
-	disconnect(){
+	disconnect(users){
 		this.setState({status: 'disconnected'});
+		this.setState({users: users});
+
 	}
 
 	onMessageAdded(message){

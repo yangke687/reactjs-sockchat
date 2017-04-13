@@ -9,7 +9,7 @@ class Message extends Component{
 		const {message} = this.props;
 		var formattedTime = this.formatTime(message.timestamp);
 		return (<div className="message">
-			<strong></strong> { formattedTime } - { message.text }
+			<strong>{message.user}</strong> { formattedTime } - { message.text }
 		</div>);
 	}
 	formatTime(timestamp){

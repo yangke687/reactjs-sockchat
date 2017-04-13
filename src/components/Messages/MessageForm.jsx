@@ -16,7 +16,8 @@ class MessageForm extends Component{
 		evt.preventDefault();
 		this.props.emit('messageAdded',{
 			timestamp: Date.now(),
-			text: this.refs.text.value.trim()
+			text: this.refs.text.value.trim(),
+			user: this.props.user.name
 		});
 
 		// clear form
